@@ -199,4 +199,20 @@ impl Default for Executor {
             car_type: CarType::Normal,
         }
     }
+    
+    fn main() {
+    // 普通车辆
+    let mut normal = Executor::new();
+    normal.execute_batch("MMLMR").unwrap();
+    println!("普通车辆: {:?}", normal.state());
+
+    // 跑车
+    let mut sports = Executor::init_with_type(0,0,'N', CarType::SportsCar);
+    sports.execute_batch("MLMR").unwrap();
+    println!("跑车: {:?}", sports.state());
+
+    // Bus
+    let mut bus = Executor::init_with_type(0,0,'N', CarType::Bus);
+    bus.execute_batch("BFMLR").unwrap();
+    println!("Bus: {:?}", bus.state());
 }
